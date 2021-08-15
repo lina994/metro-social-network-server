@@ -1,17 +1,24 @@
-import dotenv from 'dotenv'
-dotenv.config()
-
-import express from 'express'
+import express from 'express';
+import sequelize from './db'; 
 
 
-const PORT = process.env.PORT || 3000
-// const PORT = 3000
-const app = express()
+const PORT = process.env.PORT || 3000;
+const app = express();
 
- 
-app.listen(PORT, () =>
-  console.log(`Server listening on port ${PORT}!`)
-);
+const start = async () => {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync();
+    app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+start();
+
+
+
 
 // "start": "node src/app.js",
 // "type": "module",

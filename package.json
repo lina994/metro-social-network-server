@@ -5,19 +5,20 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "server": "node dist-server/app.js",
+    "start": "node -r dotenv/config dist-server/app.js",
     "transpile": "babel ./src --out-dir dist-server",
     "clean": "rimraf dist-server",
     "build": "npm run clean && npm run transpile",
-    "prod": "npm run build && npm run server",
+    "prod": "npm run build && npm run start",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
