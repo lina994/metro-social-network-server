@@ -1,6 +1,6 @@
 import express from 'express';
 import sequelize from './db'; 
-
+import models from './models/models'
 
 const PORT = process.env.PORT || 3000;
 const app = express();
