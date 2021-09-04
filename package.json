@@ -5,12 +5,12 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "node -r dotenv/config dist-server/app.js",
-    "transpile": "babel ./src --out-dir dist-server",
     "clean": "rimraf dist-server",
+    "transpile": "babel ./src --out-dir dist-server",
     "build": "npm run clean && npm run transpile",
+    "start": "node -r dotenv/config dist-server/app.js",
     "prod": "npm run build && npm run start",
-    "dev": "nodemon",
+    "dev": "nodemon --exec babel-node -r dotenv/config src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
+    "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.0",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2"
