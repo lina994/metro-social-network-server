@@ -3,7 +3,6 @@ import peopleController from '../controllers/peopleController'
 
 const router = new Router();
 
-router.get('/', peopleController.getAll);
-router.get('/:id', peopleController.getOne);
+router.get('/', peopleController.getPage);
 
 export default router;
