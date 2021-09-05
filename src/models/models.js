@@ -4,7 +4,7 @@ import { DataTypes } from 'sequelize';
 
 /* Model Definitions */
 
-const User = sequelize.define('user', {
+export const User = sequelize.define('user', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
   password: { type: DataTypes.STRING, allowNull: false },
@@ -22,70 +22,70 @@ const User = sequelize.define('user', {
 });
 
 // foreign keys : userId(User), interlocutorId(User)
-const Conversation = sequelize.define('conversation', {
+export const Conversation = sequelize.define('conversation', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
 });
 
 // foreign keys : conversationId(Conversation), senderId(User), receiverId(User)
-const Message = sequelize.define('message', {
+export const Message = sequelize.define('message', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   messageText: { type: DataTypes.STRING },
   isRead: { type: DataTypes.BOOLEAN, defaultValue: false, allowNull: false }
 });
 
 // foreign keys : senderId(User), receiverId(User)
-const UserPost = sequelize.define('user_post', {
+export const UserPost = sequelize.define('user_post', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   postText: { type: DataTypes.STRING }
 });
 
 // foreign keys : userPostId(UserPost), userId(User)
-const UserPostLike = sequelize.define('user_post_like', {
+export const UserPostLike = sequelize.define('user_post_like', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
 });
 
 // foreign keys : userPostId(UserPost), userId(User)
-const UserPostComment = sequelize.define('user_post_comment', {
+export const UserPostComment = sequelize.define('user_post_comment', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   commentText: { type: DataTypes.STRING }
 });
 
 // foreign keys : userPostCommentId(UserPostComment), userId(User)
-const UserPostCommentLike = sequelize.define('user_post_comment_like', {
+export const UserPostCommentLike = sequelize.define('user_post_comment_like', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
 });
 
-const Group = sequelize.define('group', {
+export const Group = sequelize.define('group', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   title: { type: DataTypes.STRING, allowNull: false },
   summary: { type: DataTypes.STRING }
 });
 
 // foreign keys : groupId(Group), userId(User)
-const GroupMember = sequelize.define('group_member', {
+export const GroupMember = sequelize.define('group_member', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   role: { type: DataTypes.STRING, defaultValue: "MEMBER", allowNull: false }
 });
 
 // foreign keys : groupId(Group), userId(User)
-const GroupPost = sequelize.define('group_post', {
+export const GroupPost = sequelize.define('group_post', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   postText: { type: DataTypes.STRING }
 });
 
 // foreign keys : groupPostId(GroupPost), userId(User)
-const GroupPostLike = sequelize.define('group_post_like', {
+export const GroupPostLike = sequelize.define('group_post_like', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
 });
 
 // foreign keys : groupPostId(GroupPost), userId(User)
-const GroupPostComment = sequelize.define('group_post_comment', {
+export const GroupPostComment = sequelize.define('group_post_comment', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   commentText: { type: DataTypes.STRING }
 });
 
 // foreign keys : groupPostCommentId(GroupPostComment), userId(User)
-const GroupPostCommentLike = sequelize.define('group_post_comment_like', {
+export const GroupPostCommentLike = sequelize.define('group_post_comment_like', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
 });
 

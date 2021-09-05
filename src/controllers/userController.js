@@ -1,6 +1,13 @@
+import ApiError from '../errors/apiError';
+
 class UserController {
 
-  async registration(req, res) {
+  async registration(req, res, next) {
+    // const { email, password, role } = req.body;
+    // if (!email || !password) {
+    //   return next(ApiError.badRequest('Incorrect email or password'));
+    // }
+
     res.json({ message: 'TODO: UserController registration' });
   }
 
