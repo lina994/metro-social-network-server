@@ -1,5 +1,15 @@
 # social-network-server-2021
 
+## Navigation
+
+- [Available Scripts](#available-scripts)
+- [API Reference](#api-reference)
+  - [HTTP Call Type](#http-call-type)
+  - [Status Code](#status-code)
+  - [Middlewares](#middlewares)
+  - [Authentication Model](#authentication-model)
+  - [Summary](#summary)
+
 ## Available Scripts
 
 ### `npm run prod`
@@ -42,42 +52,10 @@
 
 TODO
 
-### Supported API methods
-
-#### /people
-
-Method: 
-- get
-
-Input:
-- count (Query Param, default: 20)  
-- page (Query Param, default: 1)
-
-Example:  
-http://localhost:3001/api/people?count=25&page=2
-
-Output:
-JSON object
-- Array of objects
-- Object fields: 
-  - id (integer)
-  - email (string)
-  - password (string)
-  - role (string)
-  - isActive (boolean)
-  - lastLogin (DATETIME)
-  - accountStatus (string)
-  - firstName (string)
-  - lastName (string)
-  - imgUrl (string)
-  - intro (string)
-  - country (string)
-  - city (string)
-  - gender (string)
-  - createdAt (DATETIME)
-  - updatedAt (DATETIME)
-
 ### Summary
+
+full methods documentation: [API.md](https://github.com/lina994/social-network-server-2021/blob/master/API.md)
+
 
 | URL        | Method    | Input             | Output                        |
 | ---------- | --------- | ----------------- | ----------------------------- |
