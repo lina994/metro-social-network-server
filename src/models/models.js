@@ -21,6 +21,11 @@ export const User = sequelize.define('user', {
   gender: { type: DataTypes.STRING }
 });
 
+// foreign keys : userId(User), friendId(User)
+export const UsersFriend = sequelize.define('users_friend', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
+});
+
 // foreign keys : userId(User), interlocutorId(User)
 export const Conversation = sequelize.define('conversation', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false }
@@ -105,8 +110,8 @@ Message.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });
 User.hasMany(Message, { foreignKey: 'receiverId' });
 Message.belongsTo(User, { as: 'receiver', foreignKey: 'receiverId' });
 
-User.belongsToMany(User, { through: 'Friends', as: 'user', foreignKey: 'userId' } );
-User.belongsToMany(User, { through: 'Friends',  as: 'friend', foreignKey: 'friendId' });
+User.belongsToMany(User, { through: UsersFriend, as: 'user', foreignKey: 'userId' } );
+User.belongsToMany(User, { through: UsersFriend,  as: 'friend', foreignKey: 'friendId' });
 
 User.hasMany(UserPost, { foreignKey: 'senderId' });
 UserPost.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });

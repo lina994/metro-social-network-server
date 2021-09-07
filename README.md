@@ -60,5 +60,3 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 | URL        | Method    | Input             | Output                        |
 | ---------- | --------- | ----------------- | ----------------------------- |
 | /people    | get       | count, page       | JSON object - array of users  |
-| /people    | post      | TODO              | TODO                          |
-| /people    | delete    | TODO              | TODO                          |
