@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="132.62112mm"
+   height="68.187149mm"
+   viewBox="0 0 132.62113 68.187149"
+   version="1.1"
+   id="svg139202"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="logo-server.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview139204"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5"
+     lock-margins="true"
+     showborder="true"
+     inkscape:showpageshadow="false"
+     inkscape:zoom="0.67081229"
+     inkscape:cx="260.13238"
+     inkscape:cy="494.17699"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs139199">
+    <rect
+       x="165.47102"
+       y="287.71088"
+       width="342.86789"
+       height="111.80475"
+       id="rect1046-9-5-34-6" />
+    <rect
+       x="289.20163"
+       y="796.0498"
+       width="149.073"
+       height="83.480881"
+       id="rect113331" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(4.5834703,4.3146922)">
+    <g
+       id="g139322">
+      <path
+         style="fill:#0191ff;fill-opacity:1;stroke:#000000;stroke-width:0.257175px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+         d="M 0.67522082,26.084454 53.60872,0.89718446 48.97382,58.642844 Z"
+         id="path92738-2"
+         sodipodi:nodetypes="cccc" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.85040321,0,0,0.85040321,-116.51375,-236.11843)"
+         id="text1044-4-9-71-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Berlin Sans FB';-inkscape-font-specification:'Berlin Sans FB';white-space:pre;shape-inside:url(#rect1046-9-5-34-6);display:inline;fill:#0191ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.66045;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"><tspan
+           x="165.4707"
+           y="325.31867"
+           id="tspan139336">Metro7</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.34981283,0,0,0.34981283,-42.267096,-233.74053)"
+         id="text113329"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Berlin Sans FB';-inkscape-font-specification:'Berlin Sans FB';white-space:pre;shape-inside:url(#rect113331);fill:#0581de;fill-opacity:1;stroke:none"><tspan
+           x="289.20117"
+           y="833.65851"
+           id="tspan139338">SERVER</tspan></text>
+    </g>
+  </g>
+</svg>

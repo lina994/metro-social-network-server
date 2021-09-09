@@ -3,7 +3,7 @@ import friendsController from '../controllers/friendsController'
 
 const router = new Router();
 
-router.get('/', friendsController.getAll);
+router.get('/', friendsController.getPage);
 router.post('/', friendsController.addOne);
 router.delete('/', friendsController.removeOne);
 

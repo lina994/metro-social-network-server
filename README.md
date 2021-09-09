@@ -1,22 +1,62 @@
-# social-network-server-2021
 
-## Navigation
+<p align="center">
+  <img src="https://github.com/lina994/social-network-server-2021/blob/master/documentation/logo-server.svg?raw=true" alt="Logo" width="300"/>
+</p>
 
-- [Available Scripts](#available-scripts)
+<h1 align="center">
+  Metro Server - Social Network Server
+</h1>
+
+<p align="center">
+  <img src="https://shields.io/badge/npm-v6.14.10-blue" alt="npm version"/>
+  <img src="https://img.shields.io/badge/node-14.15.4-blue" alt="node version"/>
+  <img src="https://img.shields.io/badge/MySQL-8.0.26-blue" alt="MySQL version"/>
+</p>
+
+
+## Table of contents
+
+- [Quick Start](#quick-start)
+  - [Download Server](#download-server)
+  - [Add Environment File](#add-environment-file)  
+  - [Available Scripts](#available-scripts)
 - [API Reference](#api-reference)
   - [HTTP Call Type](#http-call-type)
   - [Status Code](#status-code)
   - [Middlewares](#middlewares)
   - [Authentication Model](#authentication-model)
-  - [Summary](#api-summary)
+  - [API Summary](#api-summary)
 - [Database](#database)
 
-## Available Scripts
+## Quick Start
 
-### `npm run prod`
+### Download Server
 
-### `npm run dev`
+```
+git clone https://github.com/lina994/social-network-server-2021.git
+cd social-network-server-2021
+npm install
+```
 
+### Add Environment File
+
+File name: `.env`  
+File location: `social-network-server-2021` directory
+
+```
+PORT = your_port
+DB_NAME = your_db_name
+DB_USER = your_db_username
+DB_PASSWORD = your_db_password
+DB_HOST = your_db_host
+DB_PORT = your_db_port
+```
+
+### Available Scripts
+
+#### `npm run prod`
+
+#### `npm run dev`
 
 ## API Reference
 
@@ -61,8 +101,12 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 | URL        | Method    | Input             | Output                        |
 | ---------- | --------- | ----------------- | ----------------------------- |
 | /people    | get       | count, page       | JSON object - array of users  |
+| /friends   | get       | count, page       | JSON object - array of users  |
+| /friends   | post      | id1, id2          | JSON object - user            |
 
 
 ## Database
+
+Database: MySQL 8.0.26
 
 ![Database](https://github.com/lina994/social-network-server-2021/blob/master/documentation/db_sn.png?raw=true "Database")
