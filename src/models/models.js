@@ -110,8 +110,8 @@ Message.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });
 User.hasMany(Message, { foreignKey: 'receiverId' });
 Message.belongsTo(User, { as: 'receiver', foreignKey: 'receiverId' });
 
-User.belongsToMany(User, { through: UsersFriend, as: 'friend', foreignKey: 'userId' } );
-User.belongsToMany(User, { through: UsersFriend,  as: 'user', foreignKey: 'friendId' });
+User.belongsToMany(User, { through: UsersFriend, as: 'friends', foreignKey: 'userId' } );
+User.belongsToMany(User, { through: UsersFriend,  as: 'users', foreignKey: 'friendId' });
 
 User.hasMany(UserPost, { foreignKey: 'senderId' });
 UserPost.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });

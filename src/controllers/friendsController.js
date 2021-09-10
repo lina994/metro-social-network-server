@@ -14,7 +14,7 @@ class FriendsController {
     let count = isPositiveInteger(req.query.count)? parseInt(req.query.count) : 20;
     let page = isPositiveInteger(req.query.page)? parseInt(req.query.page) : 1;
     const user = await User.findByPk(id);
-    const friends = await user.getFriend({
+    const friends = await user.getFriends({
       attributes: {
         exclude: FriendsController.attr_exclude
       }
@@ -36,13 +36,13 @@ class FriendsController {
       user1.addFriend(user2);
       user2.addFriend(user1);
       await user1.reload();
-      const friend1 = await user1.getFriend({
+      const friend = await user1.getFriends({
         where: { id: id2},
         attributes: {
           exclude: FriendsController.attr_exclude
         }
       });
-      res.json(friend1[0]);
+      res.json(friend[0]);
     } catch (e) {
       next(ApiError.badRequest(e.message));
     }
