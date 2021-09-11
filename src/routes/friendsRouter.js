@@ -8,3 +8,4 @@ router.post('/', friendsController.addFriend);
 router.delete('/', friendsController.removeFriend);
 
 export default router;
+

@@ -8,7 +8,7 @@ class FriendsController {
 
   async getPage(req, res, next) {
     if (!isPositiveInteger(req.query.id)) {
-      return next(ApiError.badRequest('Incorrect id'))
+      return next(ApiError.badRequest('Incorrect id'));
     }
     let id = parseInt(req.query.id);
     let count = isPositiveInteger(req.query.count)? parseInt(req.query.count) : 20;
@@ -25,7 +25,7 @@ class FriendsController {
 
   async addFriend(req, res, next) {
     if (!isPositiveInteger(req.body.id1) || !isPositiveInteger(req.body.id2)) {
-      return next(ApiError.badRequest('Incorrect id'))
+      return next(ApiError.badRequest('Incorrect id'));
     }
     let id1 = parseInt(req.body.id1);
     let id2 = parseInt(req.body.id2);
@@ -48,9 +48,9 @@ class FriendsController {
     }
   }
 
-  async removeFriend(req, res) {
+  async removeFriend(req, res, next) {
     if (!isPositiveInteger(req.query.id1) || !isPositiveInteger(req.query.id2)) {
-      return next(ApiError.badRequest('Incorrect id'))
+      return next(ApiError.badRequest('Incorrect id'));
     }
     let id1 = parseInt(req.query.id1);
     let id2 = parseInt(req.query.id2);
@@ -69,3 +69,4 @@ class FriendsController {
 }
 
 export default new FriendsController();
+

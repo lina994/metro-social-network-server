@@ -98,15 +98,19 @@ TODO
 full methods documentation: [API.md](https://github.com/lina994/social-network-server-2021/blob/master/documentation/API.md)
 
 
-| URL        | Method    | Input             | Output                        |
-| ---------- | --------- | ----------------- | ----------------------------- |
-| /people    | get       | count, page       | JSON object - array of users  |
-| /friends   | get       | count, page       | JSON object - array of users  |
-| /friends   | post      | id1, id2          | JSON object - user            |
-
+| URL        | Method    | Input                                                                      | Output                        |
+| ---------- | --------- | -------------------------------------------------------------------------- | ----------------------------- |
+| /people    | get       | (optional: count, page)                                                    | JSON object - array of users  |
+| /friends   | get       | id, (optional: count, page)                                                | JSON object - array of users  |
+| /friends   | post      | id1, id2                                                                   | JSON object - user            |
+| /friends   | delete    | id1, id2                                                                   |                               |
+| /profile   | get       | id                                                                         | JSON object - user            |
+| /profile   | put       | id, (optional: firstName, lastName, imgUrl, intro, country, city, gender)  |                               |
 
 ## Database
 
 Database: MySQL 8.0.26
 
 ![Database](https://github.com/lina994/social-network-server-2021/blob/master/documentation/db_sn.png?raw=true "Database")
+
+
