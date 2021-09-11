@@ -23,7 +23,7 @@ class FriendsController {
   }
 
 
-  async addOne(req, res, next) {
+  async addFriend(req, res, next) {
     if (!isPositiveInteger(req.body.id1) || !isPositiveInteger(req.body.id2)) {
       return next(ApiError.badRequest('Incorrect id'))
     }
@@ -48,8 +48,22 @@ class FriendsController {
     }
   }
 
-  async removeOne(req, res) {
-    res.json({ message: 'TODO: FriendsController removeOne' });
+  async removeFriend(req, res) {
+    if (!isPositiveInteger(req.query.id1) || !isPositiveInteger(req.query.id2)) {
+      return next(ApiError.badRequest('Incorrect id'))
+    }
+    let id1 = parseInt(req.query.id1);
+    let id2 = parseInt(req.query.id2);
+
+    try {
+      let user1 = await User.findByPk(id1);
+      let user2 = await User.findByPk(id2);
+      user1.removeFriend(user2);
+      user2.removeFriend(user1);
+      res.send();
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
 }
