@@ -97,10 +97,13 @@ export const GroupPostCommentLike = sequelize.define('group_post_comment_like', 
 
 /* Associations */
 
-User.hasMany(Conversation, { foreignKey: 'userId' });
-Conversation.belongsTo(User, { as: 'user', foreignKey: 'userId' });
-User.hasMany(Conversation, { foreignKey: 'interlocutorId' });
-Conversation.belongsTo(User, { as: 'interlocutor', foreignKey: 'interlocutorId' });
+User.belongsToMany(User, { through: UsersFriend, as: 'friends', foreignKey: 'userId' } );
+User.belongsToMany(User, { through: UsersFriend,  as: 'users', foreignKey: 'friendId' });
+
+User.hasMany(Conversation, { as: 'conversationUser', foreignKey: 'userId' });
+Conversation.belongsTo(User, { as: 'conversationUser', foreignKey: 'userId' });
+User.hasMany(Conversation, { as: 'conversationInterlocutor', foreignKey: 'interlocutorId' });
+Conversation.belongsTo(User, { as: 'conversationInterlocutor', foreignKey: 'interlocutorId' });
 
 Conversation.hasMany(Message);
 Message.belongsTo(Conversation);
@@ -109,9 +112,6 @@ User.hasMany(Message, { foreignKey: 'senderId' });
 Message.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });
 User.hasMany(Message, { foreignKey: 'receiverId' });
 Message.belongsTo(User, { as: 'receiver', foreignKey: 'receiverId' });
-
-User.belongsToMany(User, { through: UsersFriend, as: 'friends', foreignKey: 'userId' } );
-User.belongsToMany(User, { through: UsersFriend,  as: 'users', foreignKey: 'friendId' });
 
 User.hasMany(UserPost, { foreignKey: 'senderId' });
 UserPost.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });

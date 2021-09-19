@@ -17,7 +17,9 @@ class FriendsController {
     const friends = await user.getFriends({
       attributes: {
         exclude: FriendsController.attr_exclude
-      }
+      },
+      offset: (page - 1) * count, 
+      limit: count 
     });
     res.json(friends);
   }

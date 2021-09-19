@@ -98,14 +98,20 @@ TODO
 full methods documentation: [API.md](https://github.com/lina994/social-network-server-2021/blob/master/documentation/API.md)
 
 
-| URL        | Method    | Input                                                                      | Output                        |
-| ---------- | --------- | -------------------------------------------------------------------------- | ----------------------------- |
-| /people    | get       | (optional: count, page)                                                    | JSON object - array of users  |
-| /friends   | get       | id, (optional: count, page)                                                | JSON object - array of users  |
-| /friends   | post      | id1, id2                                                                   | JSON object - user            |
-| /friends   | delete    | id1, id2                                                                   |                               |
-| /profile   | get       | id                                                                         | JSON object - user            |
-| /profile   | put       | id, (optional: firstName, lastName, imgUrl, intro, country, city, gender)  |                               |
+| URL                     | Method    |
+| ----------------------- | --------- |
+| /people                 | get       |
+| /friends                | get       |
+| /friends                | post      |
+| /friends                | delete    |
+| /profile                | get       |
+| /profile                | put       |
+| /conversation           | get       |
+| /conversation           | post      |
+| /conversation           | delete    |
+| /conversation/messages  | get       |
+| /conversation/messages  | post      |
+| /conversation/messages  | delete    |
 
 ## Database
 
