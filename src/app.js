@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import cors from 'cors';
 import sequelize from './db'; 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/', express.static(path.join(__dirname, '../static')));
 app.use('/api', router);
 
 app.use(errorHandlingMiddleware);

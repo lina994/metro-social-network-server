@@ -3,15 +3,29 @@
 ## Table of contents
 
 - [/people](#people)
+  - [/get](#people%20get)
 - [/friends](#friends)
+  - [/get](#friends%20get)
+  - [/post](#friends%20post)
+  - [/delete](#friends%20delete)
 - [/profile](#profile)
+  - [/get](#profile%20get)
+  - [/put](#profile%20put)
+- [/profile/img](#profile/img)
+  - [/put](#profile/img%20put)
 - [/conversation](#conversation)
+  - [/get](#conversation%20get)
+  - [/post](#conversation%20post)
+  - [/delete](#conversation%20delete)
 - [/conversation/messages](#conversation/messages)
+  - [/get](#conversation/messages%20get)
+  - [/post](#conversation/messages%20post)
+  - [/delete](#conversation/messages%20delete)
 
 
 ## /people
 
-### get
+### /people get
 
 Input:
 - count (Query Param, optional, default: 20)  
@@ -38,7 +52,7 @@ JSON object
 
 ## /friends
 
-### get
+### /friends get
 
 Input:
 - id (Query Param, required)
@@ -69,7 +83,7 @@ JSON object
     - userId (integer)
     - friendId (integer)
 
-### post
+### /friends post
 
 Input:
 - id1 (body, required)
@@ -104,7 +118,7 @@ JSON object
     - userId (integer)
     - friendId (integer)
 
-### delete
+### /friends delete
 
 Input:
 - id1 (Query Param, , required)
@@ -118,7 +132,7 @@ empty
 
 ## /profile
 
-### get
+### /profile get
 
 Input:
 - id (Query Param, required)
@@ -141,7 +155,7 @@ JSON object
   - city (string)
   - gender (string)
 
-### put
+### /profile put
 
 Input:
 - id (body, required)
@@ -164,9 +178,33 @@ Input:
 Output:
 empty
 
+## /profile/img
+
+### /profile/img put
+
+Input:
+- id (integer)
+- avatar (file)
+
+  Example:
+  http://localhost:3001/api/profile/img
+  
+  With postman: 
+    - set method type to PUT
+    - select Body -> form-data
+    - set first key to 'id'
+      - set value
+    - set second key name to 'avatar'
+      - set key type from Text to File
+      - choose your image file
+    You DON'T need to add any headers, Postman will do this for you automatically.
+
+Output:
+empty
+
 ## /conversation
 
-### get
+### /conversation get
 
 Input:
 - id (Query Param, required)
@@ -198,7 +236,7 @@ JSON object
       - city (string)
       - gender (string)
 
-### post
+### /conversation post
 
 Input:
 - id1 (body, required)
@@ -221,7 +259,7 @@ JSON object
   - userId (integer)
   - interlocutorId (integer)
 
-### delete
+### /conversation delete
 
 Input:
 - conversationId (Query Param, , required)
@@ -234,7 +272,7 @@ empty
 
 ## /conversation/messages
 
-### get
+### /conversation/messages get
 
 Input:
 - conversationId (Query Param, required)
@@ -257,7 +295,7 @@ JSON object
     - senderId (integer)
     - receiverId (integer)
 
-### post
+### /conversation/messages post
 
 Input:
 - conversationId (body, required)
@@ -282,7 +320,7 @@ JSON object
   - createdAt (DATETIME)
   - updatedAt (DATETIME)
 
-### delete
+### /conversation/messages delete
 
 Input:
 - messageId (Query Param, , required)

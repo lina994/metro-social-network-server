@@ -32,9 +32,6 @@ class ProfileController {
       if (req.body.lastName) {
         profile.lastName = req.body.lastName;
       }
-      if (req.body.imgUrl) {  // TODO!!! upload image
-        profile.imgUrl = req.body.imgUrl;
-      }
       if (req.body.intro) {
         profile.intro = req.body.intro;
       }
@@ -54,6 +51,24 @@ class ProfileController {
     }
   }
 
+  async updateImage(req, res, next) {
+    if (!req.file) {
+      return next(ApiError.badRequest('No file received or invalid file'));
+    }
+    if (!isPositiveInteger(req.body.id)) {
+      return next(ApiError.badRequest('Incorrect id'));
+    }
+    let id = parseInt(req.body.id);
+    const profile = await User.findByPk(id);
+    try {
+      profile.imgUrl = req.file.path.replace('\\', '/');
+      await profile.save();
+      res.send();
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
+  }
+  
 }
 
 export default new ProfileController();

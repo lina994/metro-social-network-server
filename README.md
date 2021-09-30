@@ -106,6 +106,7 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 | /friends                | delete    |
 | /profile                | get       |
 | /profile                | put       |
+| /profile/img            | put       |
 | /conversation           | get       |
 | /conversation           | post      |
 | /conversation           | delete    |

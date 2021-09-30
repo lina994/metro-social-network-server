@@ -105,3 +105,8 @@ dist
 
 # babel
 dist-server/
+
+# static folder
+static/
+!static/.gitkeep
+
