@@ -64,6 +64,47 @@ SECRET_KEY = your_secret_key
 
 ![Project structure](https://github.com/lina994/social-network-server-2021/blob/master/documentation/project_structure.png?raw=true "Project structure")
 
+Within the download project you'll find the following directories and files:
+
+```
+social-network-server-2021
+├── dist-server/
+├── documentation/
+│   ├── API.md
+├── src/
+│   ├── controllers/
+│   │   ├── conversationController.js
+│   │   ├── friendsController.js
+│   │   ├── peopleController.js
+│   │   ├── profileController.js
+│   │   └── userController.js
+│   ├── errors/
+│   │   └── apiError.js
+│   ├── middlewares/
+│   │   ├── authMiddleware.js
+│   │   ├── errorHandlingMiddleware.js
+│   │   └── fileMiddleware.js
+│   ├── models/
+│   │   └── models.js
+│   ├── routes/
+│   │   ├── index.js
+│   │   ├── conversationRouter.js
+│   │   ├── friendsRouter.js
+│   │   ├── peopleRouter.js
+│   │   ├── profileRouter.js
+│   │   └── userRouter.js
+│   ├── utils/
+│   │   └── validation.js
+│   ├── app.js
+│   └── db.js
+├── static/
+├── .env
+├── .gitignore
+├── babel.config.json
+├── nodemon.json
+└── package.json
+```
+
 ## API Reference
 
 - HTTP based API
