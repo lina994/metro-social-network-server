@@ -108,6 +108,7 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 | ----------------------- | --------- |
 | /user/registration      | post      |
 | /user/login             | post      |
+| /user/auth              | get       |
 | /people                 | get       |
 | /friends                | get       |
 | /friends                | post      |

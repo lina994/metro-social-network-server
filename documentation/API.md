@@ -6,6 +6,8 @@
   - [/post](#userregistration-post)
 - [/user/login](#userlogin)
   - [/post](#userlogin-post)
+- [/user/auth](#userauth)
+  - [/get](#userauth-get)
 - [/people](#people)
   - [/get](#people-get)
 - [/friends](#friends)
@@ -71,6 +73,23 @@ Input:
 Output:
 token (JWT)
 
+## /user/auth
+
+### /user/auth get
+
+Input:
+
+  Example:
+  http://localhost:3001/api/user/auth
+
+  With postman: 
+    - open Headers tab
+    - add 'Authorization' key
+    - set value to:
+        Bearer yourToken
+
+Output:
+token (JWT)
 
 ## /people
 
