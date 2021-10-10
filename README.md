@@ -20,6 +20,7 @@
   - [Download Server](#download-server)
   - [Add Environment File](#add-environment-file)  
   - [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
 - [API Reference](#api-reference)
   - [HTTP Call Type](#http-call-type)
   - [Status Code](#status-code)
@@ -50,6 +51,7 @@ DB_USER = your_db_username
 DB_PASSWORD = your_db_password
 DB_HOST = your_db_host
 DB_PORT = your_db_port
+SECRET_KEY = your_secret_key
 ```
 
 ### Available Scripts
@@ -57,6 +59,10 @@ DB_PORT = your_db_port
 #### `npm run prod`
 
 #### `npm run dev`
+
+## Project Structure
+
+![Project structure](https://github.com/lina994/social-network-server-2021/blob/master/documentation/project_structure.png?raw=true "Project structure")
 
 ## API Reference
 
@@ -100,6 +106,8 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 
 | URL                     | Method    |
 | ----------------------- | --------- |
+| /user/registration      | post      |
+| /user/login             | post      |
 | /people                 | get       |
 | /friends                | get       |
 | /friends                | post      |

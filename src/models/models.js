@@ -9,16 +9,16 @@ export const User = sequelize.define('user', {
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
   password: { type: DataTypes.STRING, allowNull: false },
   role: { type: DataTypes.STRING, defaultValue: "USER", allowNull: false },
-  isActive: { type: DataTypes.BOOLEAN, allowNull: false },
-  lastLogin: { type: DataTypes.DATE, allowNull: false },
+  isActive: { type: DataTypes.BOOLEAN, defaultValue: 1, allowNull: false },
+  lastLogin: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
   accountStatus: { type: DataTypes.STRING, defaultValue: "active", allowNull: false },  // active, warning, restricted, disabled
-  firstName: { type: DataTypes.STRING },
-  lastName: { type: DataTypes.STRING },
+  firstName: { type: DataTypes.STRING, defaultValue: "", allowNull: false },
+  lastName: { type: DataTypes.STRING, defaultValue: "", allowNull: false },
   imgUrl: { type: DataTypes.STRING },
-  intro: { type: DataTypes.STRING },
-  country: { type: DataTypes.STRING },
-  city: { type: DataTypes.STRING },
-  gender: { type: DataTypes.STRING }
+  intro: { type: DataTypes.STRING, defaultValue: "", allowNull: false },
+  country: { type: DataTypes.STRING, defaultValue: "", allowNull: false },
+  city: { type: DataTypes.STRING, defaultValue: "", allowNull: false },
+  gender: { type: DataTypes.STRING, defaultValue: "Not specified", allowNull: false }
 });
 
 // foreign keys : userId(User), friendId(User)

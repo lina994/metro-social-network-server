@@ -2,6 +2,10 @@
 
 ## Table of contents
 
+- [/user/registration](#userregistration)
+  - [/post](#userregistration-post)
+- [/user/login](#userlogin)
+  - [/post](#userlogin-post)
 - [/people](#people)
   - [/get](#people-get)
 - [/friends](#friends)
@@ -21,6 +25,51 @@
   - [/get](#conversationmessages-get)
   - [/post](#conversationmessages-post)
   - [/delete](#conversationmessages-delete)
+
+
+## /user/registration
+
+### /user/registration post
+
+Input:
+- email (body, required)
+- password (body, required)
+- firstName (body, optional)
+- lastName (body, optional)
+- intro (body, optional)
+- country (body, optional)
+- city (body, optional)
+- gender (body, optional)
+
+  Example:
+  http://localhost:3001/api/user/registration
+  
+  req.body = {
+    "email": "example@gmail.com",
+    "password": "myPassword"
+  }
+
+Output:
+token (JWT)
+
+## /user/login
+
+### /user/login post
+
+Input:
+- email (body, required)
+- password (body, required)
+
+  Example:
+  http://localhost:3001/api/user/login
+  
+  req.body = {
+    "email": "example@gmail.com",
+    "password": "myPassword"
+  }
+
+Output:
+token (JWT)
 
 
 ## /people
