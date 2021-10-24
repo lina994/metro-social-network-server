@@ -2,13 +2,16 @@ import bcrypt  from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import ApiError from '../errors/apiError';
 import { isEmail, isPassword } from '../utils/validation';
+import { setUserFields } from '../utils/userInfo';
 import { User } from '../models/models';
 
+// Synchronous sign
+// Returns the JsonWebToken as string
 function generateJwt(id, email, role) {
-  return jwt.sign(
-    {id, email, role},
-    process.env.SECRET_KEY,
-    {expiresIn: '24h'}
+  return jwt.sign(  
+    {id, email, role},  // payload
+    process.env.SECRET_KEY,  // secretOrPrivateKey
+    {expiresIn: '24h'}  // options
   );
 }
 
@@ -31,12 +34,7 @@ class UserController {
         email: email,
         password: hashPassword
       });
-      if (req.body.firstName) user.firstName = req.body.firstName;
-      if (req.body.lastName) user.lastName = req.body.lastName;
-      if (req.body.intro) user.intro = req.body.intro;
-      if (req.body.country) user.country = req.body.country;
-      if (req.body.city) user.city = req.body.city;
-      if (req.body.gender) user.gender = req.body.gender;
+      setUserFields(req.body, user);
       await user.save();
       const token = generateJwt(user.id, user.email, user.role);
       res.json({ token });
@@ -55,7 +53,7 @@ class UserController {
         return next(ApiError.badRequest('User not found'));
       }
       if (!bcrypt.compareSync(password, user.password)) {
-        return next(ApiError.badRequest('Invalid password'));
+        return next(ApiError.badRequest('Invalid email or password'));
       }
       const token = generateJwt(user.id, user.email, user.role);
       res.json({ token });
@@ -65,8 +63,12 @@ class UserController {
   }
 
   async isAuthorized(req, res, next) {
-    const token = generateJwt(req.user.id, req.user.email, req.user.role);
-    res.json({ token });
+    try {
+      const token = generateJwt(req.jwt.id, req.jwt.email, req.jwt.role);
+      res.json({ token });
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
   async logout(req, res) {

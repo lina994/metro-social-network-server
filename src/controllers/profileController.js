@@ -1,5 +1,6 @@
 import ApiError from '../errors/apiError';
 import { isPositiveInteger } from '../utils/validation';
+import { setUserFields } from '../utils/userInfo';
 import { User } from '../models/models';
 
 class ProfileController {
@@ -10,40 +11,33 @@ class ProfileController {
     if (!isPositiveInteger(req.query.id)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id = parseInt(req.query.id);
-    const profile = await User.findByPk(id, {
-      attributes: {
-        exclude: ProfileController.get_attr_exclude
+    try {
+      let id = parseInt(req.query.id);
+      const profile = await User.findByPk(id, {
+        attributes: {
+          exclude: ProfileController.get_attr_exclude
+        }
+      });
+      if (!profile) {
+        return next(ApiError.notFound('User not found'));
       }
-    });
-    res.json(profile);
+      res.json(profile);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
   async updateOne(req, res, next) {
-    if (!isPositiveInteger(req.body.id)) {
+    if (!isPositiveInteger(req.jwt.id)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id = parseInt(req.body.id);
-    const profile = await User.findByPk(id);
     try {
-      if (req.body.firstName) {
-        profile.firstName = req.body.firstName;
+      let id = parseInt(req.jwt.id);
+      const profile = await User.findByPk(id);
+      if (!profile) {
+        return next(ApiError.badRequest('User not found'));
       }
-      if (req.body.lastName) {
-        profile.lastName = req.body.lastName;
-      }
-      if (req.body.intro) {
-        profile.intro = req.body.intro;
-      }
-      if (req.body.country) {
-        profile.country = req.body.country;
-      }
-      if (req.body.city) {
-        profile.city = req.body.city;
-      }
-      if (req.body.gender) {
-        profile.gender = req.body.gender;
-      }
+      setUserFields(req.body, profile);
       await profile.save();
       res.send();
     } catch (e) {
@@ -55,12 +49,15 @@ class ProfileController {
     if (!req.file) {
       return next(ApiError.badRequest('No file received or invalid file'));
     }
-    if (!isPositiveInteger(req.body.id)) {
+    if (!isPositiveInteger(req.jwt.id)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id = parseInt(req.body.id);
-    const profile = await User.findByPk(id);
     try {
+      let id = parseInt(req.jwt.id);
+      const profile = await User.findByPk(id);
+      if (!profile) {
+        return next(ApiError.badRequest('User not found'));
+      }
       profile.imgUrl = req.file.path.replace('\\', '/');
       await profile.save();
       res.send();

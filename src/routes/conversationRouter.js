@@ -1,15 +1,16 @@
 import Router from 'express';
+import authMiddleware from '../middlewares/authMiddleware';
 import conversationController from '../controllers/conversationController'
 
 const router = new Router();
 
-router.get('/', conversationController.getPage);
-router.post('/', conversationController.addConversation);
-router.delete('/', conversationController.deleteConversation);
+router.get('/', authMiddleware, conversationController.getPage);
+router.post('/', authMiddleware, conversationController.addConversation);
+router.delete('/', authMiddleware, conversationController.deleteConversation);
 
-router.get('/messages/', conversationController.getMessagePage);
-router.post('/messages/', conversationController.sendMessage);
-router.delete('/messages/', conversationController.deleteMessage);
+router.get('/messages/', authMiddleware, conversationController.getMessagePage);
+router.post('/messages/', authMiddleware, conversationController.sendMessage);
+router.delete('/messages/', authMiddleware, conversationController.deleteMessage);
 
 
 export default router;

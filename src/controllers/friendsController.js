@@ -26,10 +26,10 @@ class FriendsController {
 
 
   async addFriend(req, res, next) {
-    if (!isPositiveInteger(req.body.id1) || !isPositiveInteger(req.body.id2)) {
+    if (!isPositiveInteger(req.jwt.id) || !isPositiveInteger(req.body.id2)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id1 = parseInt(req.body.id1);
+    let id1 = parseInt(req.jwt.id);
     let id2 = parseInt(req.body.id2);
 
     try {
@@ -51,10 +51,10 @@ class FriendsController {
   }
 
   async removeFriend(req, res, next) {
-    if (!isPositiveInteger(req.query.id1) || !isPositiveInteger(req.query.id2)) {
+    if (!isPositiveInteger(req.jwt.id) || !isPositiveInteger(req.query.id2)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id1 = parseInt(req.query.id1);
+    let id1 = parseInt(req.jwt.id);
     let id2 = parseInt(req.query.id2);
 
     try {

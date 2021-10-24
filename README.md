@@ -94,6 +94,7 @@ social-network-server-2021
 │   │   ├── profileRouter.js
 │   │   └── userRouter.js
 │   ├── utils/
+│   │   ├── userInfo.js
 │   │   └── validation.js
 │   ├── app.js
 │   └── db.js
@@ -132,37 +133,47 @@ social-network-server-2021
 
 ### Middlewares
 
-| Error       | Middleware              |
-| ----------- | ----------------------- |
-| API Error   | errorHandlingMiddleware |
+| Middleware     | File name                     |
+| -------------- | ----------------------------- |
+| API Error      | errorHandlingMiddleware.js    |
+| File filter    | fileMiddleware.js             |
+| Authorization  | authMiddleware.js             |
+| CORS           | app.js: import 'cors' package |
 
 ### Authentication Model
 
-TODO
+JWT (JSON Web Token) package
+
+|                      | Input (required)      | Output     | Description                   |
+| -------------------- | --------------------- | -----------|-------------------------------|
+| authMiddleware       | JWT token             | req.jwt   | jwt.verify                    |
+| /user/registration   | email, password       | JWT token  | bcrypt.hashSync, jwt.sign     |
+| /user/login          | email, password       | JWT token  | bcrypt.compareSync, jwt.sign  |
+| /user/auth           | Authorization header  | JWT token  | authMiddleware, jwt.sign      |
 
 ### API Summary
 
 full methods documentation: [API.md](https://github.com/lina994/social-network-server-2021/blob/master/documentation/API.md)
 
 
-| URL                     | Method    |
-| ----------------------- | --------- |
-| /user/registration      | post      |
-| /user/login             | post      |
-| /user/auth              | get       |
-| /people                 | get       |
-| /friends                | get       |
-| /friends                | post      |
-| /friends                | delete    |
-| /profile                | get       |
-| /profile                | put       |
-| /profile/img            | put       |
-| /conversation           | get       |
-| /conversation           | post      |
-| /conversation           | delete    |
-| /conversation/messages  | get       |
-| /conversation/messages  | post      |
-| /conversation/messages  | delete    |
+| URL                     | Method    | Authorization |
+| ----------------------- | --------- | ------------- |
+| /user/registration      | post      | -             |
+| /user/login             | post      | -             |
+| /user/auth              | get       | required      |
+| /people                 | get       | -             |
+| /friends                | get       | -             |
+| /friends                | post      | required      |
+| /friends                | delete    | required      |
+| /profile                | get       | -             |
+| /profile                | put       | required      |
+| /profile/img            | put       | required      |
+| /conversation           | get       | required      |
+| /conversation           | post      | required      |
+| /conversation           | delete    | required      |
+| /conversation/messages  | get       | required      |
+| /conversation/messages  | post      | required      |
+| /conversation/messages  | delete    | required      |
 
 ## Database
 

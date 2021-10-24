@@ -6,13 +6,19 @@ function authMiddleware(req, res, next) {
     next();
   }
   try {
-
-    const token = req.headers.authorization.split(' ')[1]; // Bearer tokenString
+    const authorization = req.headers.authorization.split(' '); // [Bearer, tokenString]
+    if(authorization[0] !== 'Bearer') {
+      next(ApiError.unauthorized('Expexted: Bearer accessToken'));
+    }
+    const token = authorization[1];
     if(!token) {
       next(ApiError.unauthorized('unauthorized'));
     }
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decoded; // id, email, role
+    // Synchronous verify
+    // Returns the payload decoded if the signature is valid 
+    // and optional expiration, audience, or issuer are valid. 
+    // If not, it will throw the error.
+    req.jwt = jwt.verify(token, process.env.SECRET_KEY);// id, email, role
     next();
   } catch(e) {
     next(ApiError.unauthorized('unauthorized'));

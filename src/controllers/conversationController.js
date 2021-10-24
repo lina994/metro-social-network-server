@@ -7,33 +7,36 @@ class ConversationController {
   static attr_exclude = ['email', 'password', 'role', 'createdAt', 'updatedAt'];
 
   async getPage(req, res, next) {
-    if (!isPositiveInteger(req.query.id)) {
+    if (!isPositiveInteger(req.jwt.id)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id = parseInt(req.query.id);
+    let id = parseInt(req.jwt.id);
     let count = isPositiveInteger(req.query.count)? parseInt(req.query.count) : 20;
     let page = isPositiveInteger(req.query.page)? parseInt(req.query.page) : 1;
-
-    const user = await User.findByPk(id);
-    const conversations = await user.getConversationUser({
-      include: {
-        model: User,
-        as: 'conversationInterlocutor',
-        attributes: {
-          exclude: ConversationController.attr_exclude
-        }
-      },
-      offset: (page - 1) * count, 
-      limit: count 
-    });
-    res.json(conversations);
+    try {
+      const user = await User.findByPk(id);
+      const conversations = await user.getConversationUser({
+        include: {
+          model: User,
+          as: 'conversationInterlocutor',
+          attributes: {
+            exclude: ConversationController.attr_exclude
+          }
+        },
+        offset: (page - 1) * count, 
+        limit: count 
+      });
+      res.json(conversations);
+    }  catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
   async addConversation(req, res, next) {
-    if (!isPositiveInteger(req.body.id1) || !isPositiveInteger(req.body.id2)) {
+    if (!isPositiveInteger(req.jwt.id) || !isPositiveInteger(req.body.id2)) {
       return next(ApiError.badRequest('Incorrect id'));
     }
-    let id1 = parseInt(req.body.id1);
+    let id1 = parseInt(req.jwt.id);
     let id2 = parseInt(req.body.id2);
     
     try {
@@ -57,28 +60,42 @@ class ConversationController {
       return next(ApiError.badRequest('Incorrect conversationId'));
     }
     let conversationId = parseInt(req.query.conversationId);
-    const conversation = await Conversation.findByPk(conversationId);
-    await Message.destroy({
-      where: { conversationId: conversationId }
-    });
-    await conversation.destroy();
-    res.send();
+    try {
+      const conversation = await Conversation.findByPk(conversationId);
+      if (conversation.userId != req.jwt.id) {
+        return next(ApiError.forbidden('You can only delete your own conversations'));
+      }
+      await Message.destroy({
+        where: { conversationId: conversationId }
+      });
+      await conversation.destroy();
+      res.send();
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
   async getMessagePage(req, res, next) {
     if (!isPositiveInteger(req.query.conversationId)) {
       return next(ApiError.badRequest('Incorrect conversationId'));
     }
-    let id = parseInt(req.query.conversationId);
+    let conversationId = parseInt(req.query.conversationId);
     let count = isPositiveInteger(req.query.count)? parseInt(req.query.count) : 20;
     let page = isPositiveInteger(req.query.page)? parseInt(req.query.page) : 1;
 
-    const conversation = await Conversation.findByPk(id);
-    const messages = await conversation.getMessages({
-      offset: (page - 1) * count, 
-      limit: count 
-    });
-    res.json(messages);
+    try {
+      const conversation = await Conversation.findByPk(conversationId);
+      if (conversation.userId != req.jwt.id) {
+        return next(ApiError.forbidden('You can only read messages from your own conversations'));
+      }
+      const messages = await conversation.getMessages({
+        offset: (page - 1) * count, 
+        limit: count 
+      });
+      res.json(messages);
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
   
   async sendMessage(req, res, next) {
@@ -86,11 +103,14 @@ class ConversationController {
       return next(ApiError.badRequest('Incorrect conversationId'));
     }
     let conversationId = parseInt(req.body.conversationId);
-
+    if (conversation.userId != req.jwt.id) {
+      return next(ApiError.forbidden('You can only add messages to your own conversations'));
+    }
     try {
       const conversation = await Conversation.findByPk(conversationId);
       if (!conversation)
         return next(ApiError.badRequest("conversation doesn't exist"));
+      
       let senderId = await conversation.getConversationUser().then(user => user.id);
       let receiverId = await conversation.getConversationInterlocutor().then(user => user.id);
       const conversation2 = await Conversation.findOne({ where: { userId: receiverId, interlocutorId: senderId } });
@@ -122,10 +142,20 @@ class ConversationController {
     }
     let messageId = parseInt(req.query.messageId);
 
-    await Message.destroy({
-      where: { id: messageId }
-    });
-    res.send();
+    try {
+      let message = await Message.findByPk(messageId);
+      let conversation = await Conversation.findByPk(message.conversationId);
+      if (conversation.userId != req.jwt.id) {
+        return next(ApiError.forbidden('You can only delete messages from your own conversations'));
+      }
+      await Message.destroy({
+        where: { id: messageId }
+      });
+      res.send();
+
+    } catch (e) {
+      next(ApiError.badRequest(e.message));
+    }
   }
 
 }

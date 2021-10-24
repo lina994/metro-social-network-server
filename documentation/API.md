@@ -77,6 +77,10 @@ token (JWT)
 
 ### /user/auth get
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
 
   Example:
@@ -153,15 +157,17 @@ JSON object
 
 ### /friends post
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- id1 (body, required)
 - id2 (body, required)
 
   Example:  
   http://localhost:3001/api/friends
   
   req.body = {
-    "id1": 1,
     "id2": 4
   }
 
@@ -187,6 +193,10 @@ JSON object
     - friendId (integer)
 
 ### /friends delete
+
+Authorization:
+- required (JWT)
+- Bearer token
 
 Input:
 - id1 (Query Param, , required)
@@ -225,8 +235,11 @@ JSON object
 
 ### /profile put
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- id (body, required)
 - firstName (body, optional)
 - lastName (body, optional)
 - imgUrl (body, optional)
@@ -239,7 +252,6 @@ Input:
   http://localhost:3001/api/profile
   
   req.body = {
-    "id": 1,
     "firstName": "myNewName"
   }
 
@@ -250,8 +262,11 @@ empty
 
 ### /profile/img put
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- id (integer)
 - avatar (file)
 
   Example:
@@ -274,13 +289,16 @@ empty
 
 ### /conversation get
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- id (Query Param, required)
 - count (Query Param, optional, default: 20)  
 - page (Query Param, optional, default: 1)
 
   Example:  
-  http://localhost:3001/api/conversation?id=1&count=2&page=2
+  http://localhost:3001/api/conversation?count=2&page=2
 
 Output:
 JSON object
@@ -306,15 +324,17 @@ JSON object
 
 ### /conversation post
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- id1 (body, required)
 - id2 (body, required)
 
   Example:  
   http://localhost:3001/api/conversation
   
   req.body = {
-    "id1": 1,
     "id2": 4
   }
 
@@ -329,6 +349,10 @@ JSON object
 
 ### /conversation delete
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
 - conversationId (Query Param, , required)
 
@@ -341,6 +365,10 @@ empty
 ## /conversation/messages
 
 ### /conversation/messages get
+
+Authorization:
+- required (JWT)
+- Bearer token
 
 Input:
 - conversationId (Query Param, required)
@@ -364,6 +392,10 @@ JSON object
     - receiverId (integer)
 
 ### /conversation/messages post
+
+Authorization:
+- required (JWT)
+- Bearer token
 
 Input:
 - conversationId (body, required)
@@ -390,8 +422,12 @@ JSON object
 
 ### /conversation/messages delete
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
-- messageId (Query Param, , required)
+- messageId (Query Param, required)
 
   Example:  
   http://localhost:3001/api/conversation/messages?messageId=12
