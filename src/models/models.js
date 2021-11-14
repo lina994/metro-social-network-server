@@ -9,7 +9,7 @@ export const User = sequelize.define('user', {
   email: { type: DataTypes.STRING, unique: true, allowNull: false },
   password: { type: DataTypes.STRING, allowNull: false },
   role: { type: DataTypes.STRING, defaultValue: "USER", allowNull: false },
-  isActive: { type: DataTypes.BOOLEAN, defaultValue: 1, allowNull: false },
+  isActive: { type: DataTypes.BOOLEAN, defaultValue: true, allowNull: false },
   lastLogin: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
   accountStatus: { type: DataTypes.STRING, defaultValue: "active", allowNull: false },  // active, warning, restricted, disabled
   firstName: { type: DataTypes.STRING, defaultValue: "", allowNull: false },

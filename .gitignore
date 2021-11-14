@@ -107,6 +107,6 @@ dist
 dist-server/
 
 # static folder
-static/
+static/*
 !static/.gitkeep
 
