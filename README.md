@@ -10,7 +10,7 @@
 <p align="center">
   <img src="https://shields.io/badge/npm-v6.14.10-blue" alt="npm version"/>
   <img src="https://img.shields.io/badge/node-14.15.4-blue" alt="node version"/>
-  <img src="https://img.shields.io/badge/MySQL-8.0.26-blue" alt="MySQL version"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-14.1-blue" alt="PostgreSQL version"/>
 </p>
 
 
@@ -177,7 +177,7 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 
 ## Database
 
-Database: MySQL 8.0.26
+Database: PostgreSQL 14.4
 
 ![Database](https://github.com/lina994/social-network-server-2021/blob/master/documentation/db_sn.png?raw=true "Database")
 
