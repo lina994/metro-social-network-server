@@ -10,6 +10,15 @@ import { Sequelize } from 'sequelize';
 //     dialect: 'mysql'
 //   });
 
+const isProduction = process.env.NODE_ENV === "production";
+const _dialectOptions = {
+  ssl: {
+    require: true,
+    rejectUnauthorized: false
+  }
+};
+const dialectOptions = isProduction ? _dialectOptions: {}
+
 
 const sequelize = new Sequelize(
   process.env.DB_NAME, 
@@ -18,7 +27,8 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: 'postgres'
+    dialect: 'postgres',
+    dialectOptions: dialectOptions
   });
 
 export default sequelize;
