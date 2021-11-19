@@ -102,6 +102,10 @@ token (JWT)
 Input:
 - count (Query Param, optional, default: 20)  
 - page (Query Param, optional, default: 1)
+- firstName (Query Param, optional) 
+- lastName (Query Param, optional) 
+- country (Query Param, optional) 
+- city (Query Param, optional) 
 
   Example:  
   http://localhost:3001/api/people?count=25&page=2

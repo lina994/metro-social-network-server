@@ -146,7 +146,7 @@ JWT (JSON Web Token) package
 
 |                      | Input (required)      | Output     | Description                   |
 | -------------------- | --------------------- | -----------|-------------------------------|
-| authMiddleware       | JWT token             | req.jwt   | jwt.verify                    |
+| authMiddleware       | JWT token             | req.jwt    | jwt.verify                    |
 | /user/registration   | email, password       | JWT token  | bcrypt.hashSync, jwt.sign     |
 | /user/login          | email, password       | JWT token  | bcrypt.compareSync, jwt.sign  |
 | /user/auth           | Authorization header  | JWT token  | authMiddleware, jwt.sign      |
