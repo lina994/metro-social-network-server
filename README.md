@@ -161,7 +161,7 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 | /user/registration      | post      | -             |
 | /user/login             | post      | -             |
 | /user/auth              | get       | required      |
-| /people                 | get       | -             |
+| /people                 | get       | required      |
 | /friends                | get       | -             |
 | /friends                | post      | required      |
 | /friends                | delete    | required      |

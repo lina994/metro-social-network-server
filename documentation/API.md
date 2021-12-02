@@ -99,6 +99,10 @@ token (JWT)
 
 ### /people get
 
+Authorization:
+- required (JWT)
+- Bearer token
+
 Input:
 - count (Query Param, optional, default: 20)  
 - page (Query Param, optional, default: 1)
