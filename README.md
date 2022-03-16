@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/lina994/social-network-server-2021/blob/master/documentation/logo-server.svg?raw=true" alt="Logo" width="300"/>
+  <img src="https://github.com/lina994/metro-social-network-server/blob/main/documentation/logo-server.svg?raw=true" alt="Logo" width="300"/>
 </p>
 
 <h1 align="center">
@@ -34,15 +34,15 @@
 ### Download Server
 
 ```
-git clone https://github.com/lina994/social-network-server-2021.git
-cd social-network-server-2021
+git clone https://github.com/lina994/metro-social-network-server.git
+cd metro-social-network-server
 npm install
 ```
 
 ### Add Environment File
 
 File name: `.env`  
-File location: `social-network-server-2021` directory
+File location: `metro-social-network-server` directory
 
 ```
 PORT = your_port
@@ -51,6 +51,7 @@ DB_USER = your_db_username
 DB_PASSWORD = your_db_password
 DB_HOST = your_db_host
 DB_PORT = your_db_port
+NODE_ENV = development (or production)
 SECRET_KEY = your_secret_key
 ```
 
@@ -62,12 +63,12 @@ SECRET_KEY = your_secret_key
 
 ## Project Structure
 
-![Project structure](https://github.com/lina994/social-network-server-2021/blob/master/documentation/project_structure.png?raw=true "Project structure")
+![Project structure](https://github.com/lina994/metro-social-network-server/blob/main/documentation/project_structure.png?raw=true "Project structure")
 
 Within the download project you'll find the following directories and files:
 
 ```
-social-network-server-2021
+metro-social-network-server
 ├── dist-server/
 ├── documentation/
 │   ├── API.md
@@ -153,7 +154,7 @@ JWT (JSON Web Token) package
 
 ### API Summary
 
-full methods documentation: [API.md](https://github.com/lina994/social-network-server-2021/blob/master/documentation/API.md)
+full methods documentation: [API.md](https://github.com/lina994/metro-social-network-server/blob/main/documentation/API.md)
 
 
 | URL                     | Method    | Authorization |
@@ -179,6 +180,6 @@ full methods documentation: [API.md](https://github.com/lina994/social-network-s
 
 Database: PostgreSQL 14.4
 
-![Database](https://github.com/lina994/social-network-server-2021/blob/master/documentation/db_sn.png?raw=true "Database")
+![Database](https://github.com/lina994/metro-social-network-server/blob/main/documentation/db_sn.png?raw=true "Database")
 
 
